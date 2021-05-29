@@ -43,7 +43,7 @@ const highlightMenu = () => {
 window.addEventListener('scroll', highlightMenu);
 window.addEventListener('click', highlightMenu);
 
-//  Close mobile Menu when clicking on a menu item
+// //  Close mobile Menu when clicking on a menu item
 const hideMobileMenu = () => {
   const menuBars = document.querySelector('.is-active');
   if (window.innerWidth <= 768 && menuBars) {
@@ -54,3 +54,16 @@ const hideMobileMenu = () => {
 
 menuLinks.addEventListener('click', hideMobileMenu);
 navLogo.addEventListener('click', hideMobileMenu);
+
+const countElement = document.getElementById('count');
+
+updateVisitCount();
+
+function updateVisitCount(){
+	fetch('https://api.countapi.xyz/update/gnnort.github.io/mibao/?amount=1')
+		.then(res => res.json())
+		.then(res => {
+			countElement.innerHTML = res.value;
+		});
+
+}
